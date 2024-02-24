@@ -20,27 +20,7 @@
 </head>
 
 <body>
-    <!---Header-->
-    <header>
-        <a href="#" class="logo">TRAV<span>OH</span></a>
-        <ul class="navbar">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Destinasi</a></li>
-            <li><a href="#">Pusat Oleh-oleh</a></li>
-            <li><a href="#">Kuliner</a></li>
-            <li><a href="#">Statistik</a></li>
-        </ul>
-
-        <div class="h-right">
-            <a href="#"><i class="ri-instagram-fill"></i></a>
-            <a href="#"><i class="ri-tiktok-fill"></i></a>
-            <a href="#"><i class="ri-twitter-x-fill"></i></a>
-            <a href="#" class="btn">Login
-            </a>
-            <div class="bx bx-menu" id="menu-icon"></div>
-        </div>
-    </header>
-
+<?php include "layout/header.html" ?>
     <!--Home Section-->
     <section class="home">
         <div class="home-text">
@@ -175,43 +155,8 @@
             </form>
         </div>
     </section>
-
-
-    <!-- Footer Section -->
-    <section class="footer">
-        <div class="footer-box">
-            <h3>Layanan Kami</h3>
-            <a href="#">Email Bisnis</a>
-            <a href="#">Branding</a>
-            <a href="#">Perusahaan</a>
-            <a href="#">Offline</a>
-        </div>
-
-        <div class="footer-box">
-            <h3>Tentang Kami</h3>
-            <a href="#">Latar Belakang</a>
-            <a href="#">Manfaat</a>
-            <a href="#">Tim</a>
-            <a href="#">Karir</a>
-        </div>
-
-        <div class="footer-box">
-            <h3>Bantuan</h3>
-            <a href="#">Help</a>
-            <a href="#">FAQs</a>
-            <a href="#">Hubungi kami</a>
-        </div>
-
-        <div class="footer-box">
-            <h3>Social</h3>
-            <div class="social">
-                <a href="#"><i class="ri-instagram-fill"></i></a>
-                <a href="#"><i class="ri-tiktok-fill"></i></a>
-                <a href="#"><i class="ri-twitter-x-fill"></i></a>
-            </div>
-        </div>
-    </section>
-
+    
+<?php include "layout/footer.html" ?>
     <!--Js Script-->
     <script src="js/script.js"></script>
 </body>
