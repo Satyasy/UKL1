@@ -1,9 +1,18 @@
+ <?php
+session_start();
+if(isset($_POST['Logout'])){
+    session_unset();
+    header('Location:index.php');
+}
+
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.75" />
     <!--ICONs-->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
@@ -14,27 +23,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet" />
 
-    <!---CSS--->
-    <link rel="stylesheet" href="style.css" />
+    <!-- -CSS--->
+     <link rel="stylesheet" href="/dist/style.css" />
     <title>Travo</title>
 </head>
 
 <body>
-<?php include "layout/header.html" ?>
+    <?php include "./layout/header.php" ?>
     <!--Home Section-->
     <section class="home">
         <div class="home-text">
+            <!-- <h2 style="    font-size: 28px;
+            font-weight:600 ;
+            margin-bottom: 10px;
+            color: var(--text-color);">Selamat datang   /*$_SESSION["username"] */!</h2> -->
             <h5>Mari Berpetualang!</h5>
             <h1>
                 Petualangan lebih asik<br />
-                dengan TRAVOH
+                dengan TRAVO
             </h1>
+
             <p>
                 Banyuwangi adalah sebuah Kebupaten paling ujung timur yang ada di
                 pulau jawa. <br />
                 Kota ini juga disebut sebagai tempat dengan banyak Wisata dan Budaya.
             </p>
-            <a href="#" class="btn">Mulai Sekarang!</a>
+            <a class="btn">Mulai Sekarang!</a>
         </div>
     </section>
 
@@ -43,31 +57,31 @@
         <div class="feature-content">
             <div class="row">
                 <div class="row-img">
-                    <img src="./img/nap1.jpg" />
+                    <img src="img/nap1.jpg" />
                 </div>
                 <h4>Taman Nasional Baluran</h4>
             </div>
             <div class="row">
                 <div class="row-img">
-                    <img src="./img/nap2.jpg" />
+                    <img src="img/nap2.jpg" />
                 </div>
                 <h4>Taman Nasional Baluran</h4>
             </div>
             <div class="row">
                 <div class="row-img">
-                    <img src="./img/nap3.jpg" />
+                    <img src="img/nap3.jpg" />
                 </div>
                 <h4>Taman Nasional Baluran</h4>
             </div>
             <div class="row">
                 <div class="row-img">
-                    <img src="./img/nap4.jpg" />
+                    <img src="img/nap4.jpg" />
                 </div>
                 <h4>Taman Nasional Baluran</h4>
             </div>
             <div class="row">
                 <div class="row-img">
-                    <img src="./img/nap5.jpg" />
+                    <img src="img/nap5.jpg" />
                 </div>
                 <h4>Taman Nasional Baluran</h4>
             </div>
@@ -155,8 +169,9 @@
             </form>
         </div>
     </section>
-    
-<?php include "layout/footer.html" ?>
+
+
+    <?php include "layout/footer.php" ?>
     <!--Js Script-->
     <script src="js/script.js"></script>
 </body>
