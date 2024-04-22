@@ -33,10 +33,10 @@ if(isset($_POST['Logout'])){
     <!--Home Section-->
     <section class="home">
         <div class="home-text">
-            <!-- <h2 style="    font-size: 28px;
+            <h2 style="font-size: 28px;
             font-weight:600 ;
             margin-bottom: 10px;
-            color: var(--text-color);">Selamat datang   /*$_SESSION["username"] */!</h2> -->
+            color: var(--text-color);">Selamat datang</h2>
             <h5>Mari Berpetualang!</h5>
             <h1>
                 Petualangan lebih asik<br />
