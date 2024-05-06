@@ -18,20 +18,26 @@ if (isset($_POST["register"])) {
 
     if ($db->query($sql)) {
         $register_message = "Akun berhasil terdaftarkan, Silahkan Login!";
-    } else {
-        $register_message = "Akun Gagal terdaftarkan, Silahkan daftar kembali!";
-    }
-}
+    } 
+} 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en"
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/Register/style.css" />
+    <link rel="stylesheet" href="/dist/style2.css" />
     <title>Register Akun</title>
 </head>
+
+<script>
+        // JavaScript untuk menampilkan pesan error sebagai popup
+        <?php if (!empty($register_message)) : ?>
+            alert('<?php echo $register_message; ?>');
+        <?php endif; ?>
+    </script>
 
 <body>
     <div class="wrap">
@@ -53,7 +59,6 @@ if (isset($_POST["register"])) {
                     <div class="box">
                         <div class="login-field">
                             <h3>Daftar Akun</h3>
-                             <script>alert ("<?php echo "$register_message"?>")</script>
                             <label>Nama:</label><br />
                             <input type="text" name="username" class="input-field" /><br />
                             <label>Email:</label><br />
@@ -63,6 +68,7 @@ if (isset($_POST["register"])) {
                             <label>Nomor Telepon:</label><br />
                             <input type="text" name="nomor_telepon" class="input-field" /><br />
                             <button name="register" class="button">Daftar</button> <br>
+                            <script>alert ("<?php echo "$register_message"?>")</script>
                             <a href="login.php" class="#" style="margin-top: 15px">Sudah Punya akun?, Login dong!</a>
                         </div>
                     </div>

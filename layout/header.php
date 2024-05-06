@@ -19,18 +19,11 @@
     <p href="#" class="logo">TRA<span>VO</span></p>
     <ul class="navbar">
         <li><a href="index.php">Dashboard</a></li>
-        <li><a href="#">Destinasi</a></li>
-        <li><a href="#">Kuliner</a></li>
-        <li><a href="#">Statistik</a></li>
+        <li><a href="/UKL/destinasi.php">Destinasi</a></li>
+        <li><a href="../kuiner.php">Kuliner</a></li>
+        <li><a href="/UKL/statistik.php">Statistik</a></li>
         <li><a href="/CRUD/CRUD.php">Tabel</a></li>
     </ul>
-
-    <!-- <div class="h-right">
-        <a href="#"><i class="ri-instagram-fill"></i></a>
-        <a href="#"><i class="ri-tiktok-fill"></i></a>
-        <a href="#"><i class="ri-twitter-x-fill"></i></a>
-        <div class="bx bx-menu" id="menu-icon"></div>
-    </div> -->
     <div class="login"><a href="/Register/register.php">Login</a></div>
 
 </header>

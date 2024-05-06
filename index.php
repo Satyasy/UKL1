@@ -53,13 +53,13 @@ if(isset($_POST['Logout'])){
     </section>
 
     <!---Fitur Section-->
-    <section class="feature">
+    <!-- <section class="feature">
         <div class="feature-content">
             <div class="row">
                 <div class="row-img">
                     <img src="img/nap1.jpg" />
                 </div>
-                <h4>Taman Nasional Baluran</h4>
+                <h4> </h4>
             </div>
             <div class="row">
                 <div class="row-img">
@@ -85,7 +85,7 @@ if(isset($_POST['Logout'])){
                 </div>
                 <h4>Taman Nasional Baluran</h4>
             </div>
-    </section>
+    </section> -->
 
     <!-- Prei Section design -->
     <section class="prei">
@@ -157,7 +157,7 @@ if(isset($_POST['Logout'])){
     </section>
 
     <!-- Berita Section Settings -->
-    <section class="berita">
+    <!-- <section class="berita">
         <div class="berita-content">
             <div class="berita-text">
                 <h2>Ingin yang lain?</h2>
@@ -168,7 +168,7 @@ if(isset($_POST['Logout'])){
                 <input type="submit" value="Mulai" class="btn">
             </form>
         </div>
-    </section>
+    </section> -->
 
 
     <?php include "layout/footer.php" ?>

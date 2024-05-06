@@ -11,9 +11,10 @@
 }
 
 :root {
-    --text-color: #fff;
-    --bg-color: #000;
-    --main-color: #dcff40;
+    --bg-color: #45474B;
+    --text-color: #F5F7F8;
+    --main-color: #F4CE14;
+    --color: #495E57;
     --h1-font: 4.6rem;
     --h2-font: 2.8rem;
     --p-font: 15px;
@@ -135,7 +136,7 @@ section {
     position: relative;
     height: 150vh;
     width: 100%;
-    background-image: linear-gradient( rgba(0, 0, 0, .6), rgba(0, 0, 0, 0.3)), url(/img/backround.jpg);
+    background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(/img/backround.jpg);
     background-position: top center;
     display: flex;
     align-items: center;
@@ -440,7 +441,7 @@ section {
 }
 
 .footer-box a {
-    color: #979797;
+    color: var();
     margin-bottom: 0.8rem;
     transition: all .50s ease;
 }
@@ -473,12 +474,12 @@ section {
 .copyright p {
     text-align: center;
     padding: 20px;
-    color: #979797;
+    color: var(--text-color);
 }
 
 /* Login dan Register */
-
-
+/* LOGIN AND REGISTER */
+/* 
 .lgn-popup {
     position: fixed;
     top: 50%;
@@ -631,8 +632,8 @@ form .input-field {
     display: inline-flex;
     margin-top: 24px;
     font-size: 0.95rem;
-}
-
+} */
+ 
 
 
 form button {
@@ -691,4 +692,8 @@ table {
     table-layout: var(--text-color);
     font-size: var(--p-font);
 
+}
+
+.home-kuliner {
+    background-color: var(--bg-color);
 }
