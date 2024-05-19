@@ -4,23 +4,48 @@ session_start();
 $register_message = "";
 
 if (isset($_SESSION["is_login"])) {
-    header("Location:index.php");
+    header("Location: /index.php");
+    exit(); // Pastikan untuk keluar setelah pengalihan header
 }
 
 if (isset($_POST["register"])) {
     $email = $_POST["email"];
     $username = $_POST["username"];
-    $nomor_telepon = $_POST["nomor_telepon"];
+    $nomor_telepon = $_POST["number"];
     $password = $_POST["password"];
 
-    $sql = "INSERT INTO pengguna (email, username, nomor_telepon, password) VALUES 
-         ('$email','$username', '$nomor_telepon', '$password')";
+    // Hash password before storing it in the database
+    $hashed_password = md5($password);
 
-    if ($db->query($sql)) {
-        $register_message = "Akun berhasil terdaftarkan, Silahkan Login!";
-    } 
-} 
+    // Check if the username, email, and phone number already exist in the database
+    $sql_check = "SELECT * FROM pengguna WHERE email=? OR username=? OR nomor_telepon=?";
+    $stmt_check = $db->prepare($sql_check);
+    $stmt_check->bind_param("sss", $email, $username, $nomor_telepon);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+
+    if ($result_check->num_rows > 0) {
+        // Jika data sudah ada, tampilkan pesan error
+        echo "<script>alert('Username, email, atau nomor telepon sudah terdaftar');</script>";
+    } else {
+        // Jika data belum ada, lakukan pendaftaran
+        $sql = "INSERT INTO pengguna (email, username, nomor_telepon, password) VALUES (?, ?, ?, ?)";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("ssss", $email, $username, $nomor_telepon, $hashed_password);
+        
+        if ($stmt->execute()) {
+            // Redirect to login page after successful registration
+            header("Location: login.php?register_success=1");
+            // Pesan sukses setelah data berhasil dimasukkan
+            echo "<script>alert('Akun berhasil terdaftar. Silahkan login');</script>";
+            exit(); // Pastikan untuk keluar setelah pengalihan header
+        } else {
+            $register_message = "Gagal mendaftarkan akun. Silahkan coba lagi.";
+        }
+    }
+}
 ?>
+
 
 
 <!DOCTYPE html>
@@ -45,7 +70,7 @@ if (isset($_POST["register"])) {
             <div class="grid-side">
                 <div class="box">
                     <div class="login-content">
-                        <h1>Selamat Datang <span>Pengguna baru!</span> </h1>
+                        <h1>Selamat Datang <br> Pengguna baru! </h1>
                         <br>
                         <p>
                             Untuk terus menjelajahi situs kami silahkan Log-in menggunakan
@@ -59,16 +84,15 @@ if (isset($_POST["register"])) {
                     <div class="box">
                         <div class="login-field">
                             <h3>Daftar Akun</h3>
-                            <label>Nama:</label><br />
-                            <input type="text" name="username" class="input-field" /><br />
-                            <label>Email:</label><br />
-                            <input type="text" name="email" class="input-field" /><br />
-                            <label>Password:</label><br />
-                            <input type="password" name="password" class="input-field" /><br />
-                            <label>Nomor Telepon:</label><br />
-                            <input type="text" name="nomor_telepon" class="input-field" /><br />
+                            <label for="username">Nama:</label><br />
+                            <input type="text" name="username" id="username" class="input-field" /><br />
+                            <label for="email">Email:</label><br />
+                            <input type="email" name="email" id="email" class="input-field" /><br />
+                            <label for="number">Nomor Telepon:</label><br />
+                            <input type="tel" name="number" id="number" class="input-field" /><br />
+                            <label for="password">Password:</label><br />
+                            <input type="password" name="password" id="password" class="input-field" /><br />
                             <button name="register" class="button">Daftar</button> <br>
-                            <script>alert ("<?php echo "$register_message"?>")</script>
                             <a href="login.php" class="#" style="margin-top: 15px">Sudah Punya akun?, Login dong!</a>
                         </div>
                     </div>

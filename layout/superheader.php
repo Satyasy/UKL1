@@ -16,25 +16,19 @@
 
     <!---CSS--->
     <link rel="stylesheet" href="../dist/style.css" />
-    <title>Travo</title>
+    <title>Admin Page</title>
 </head>
 <header>
-    <p href="#" class="logo">TRA<span>VO</span></p>
+    <p href="" class="logo">TRA<span>VO</span></p>
     <ul class="navbar">
-        <li><a href="/index.php">Home</a></li>
-        <li><a href="/destinasi.php">Destinasi</a></li>
-        <li><a href="/kuiner.php">Kuliner</a></li>
-        <li><a href="/UKL/statistik.php">Statistik</a></li>
-        <li><a href="/about.php">About us</a></li>
+        <li><a href="/admin/dashboard.php">Dashboard</a></li>
+        <li><a href="/admin/CRUD.php">Table</a></li>
+        <li><a href="/admin/kuliner-admin.php">Kuliner</a></li>
+        <li><a href="/admin/wisata-admin.php">Wisata</a></li>
     </ul>
 
-    <div class="h-right">
-        <a href="#"><i class="ri-instagram-fill"></i></a>
-        <a href="#"><i class="ri-github-fill"></i></a>
-        <a href="#"><i class="ri-whatsapp-line"></i></a>
-        <div class="bx bx-menu" id="menu-icon"></div>
-    </div>
+    <p class="logo">Super<span>User</span></p>
 
     <div class="login"><a href="/Register/register.php">Login</a></div>
-
+    <script src="js/script.js"></script>
 </header>

@@ -44,15 +44,14 @@
     <div class="footer-box">
         <h3>Social</h3>
         <div class="social">
-            <a href="#"><i class="ri-instagram-fill"></i></a>
-            <a href="#"><i class="ri-tiktok-fill"></i></a>
-            <a href="#"><i class="ri-twitter-x-fill"></i></a>
+        <a href="#"><i class="ri-instagram-fill"></i></a>
+        <a href="#"><i class="ri-github-fill"></i></a>
+        <a href="#"><i class="ri-whatsapp-line"></i></a>
         </div>
     </div>
 </section>
 
 <!-- Hak Cipta -->
-
 <div class="copyright">
     <p>
         Copyright &copy; 2024 oleh Restyand.

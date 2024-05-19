@@ -1,8 +1,11 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=0.75" />
     <!--ICONs-->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
@@ -11,40 +14,20 @@
     <!--Fonts Google-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <!-- -CSS--->
-     <link rel="stylesheet" href="/dist/style.css" />
+    <link rel="stylesheet" href="/dist/style.css" />
     <title>Kuliner dan Oleh-Oleh</title>
 </head>
+
 <body>
-<?php include "./layout/header.php" ?>
+    <?php include "./layout/header.php" ?>
     <!-- Home Section -->
     <section class="home-kuliner">
-    <div class="home-text">
-        <h2> Temukan Kuliner dan Oleh-Oleh <br> yang anda inginkan! </h2>
-        
-
-    </div>
-    </section>
-    <!-- Prei Section design -->
-    <section class="prei">
-        <div class="prei-img">
-            <img src="./img/h1.jpg" />
-        </div>
-        <div class="prei-text">
-            <h5>Pantai Pancur</h5>
-            <h2>Tahu nggak sih?</h2>
-            <p>
-                Nama Pantai Pancur berasal dari adanya aliran sungai kecil berair
-                tawar yang langsung bertemu dengan air laut. Aliran sungai ini cukup
-                unik karena menyerupai air terjun kecil sehingga disebut pancur yang
-                jika diartikan berarti air mancur atau pancuran.
-                Lokasi aliran sungai mirip airr terjun ini berada di samping tangga
-                yang menuju pantai.
-            </p>
-            <a href="#" class="btn">Detail</a>
+        <div class="home-text2">
+            <h1> Temukan Kuliner dan Oleh-Oleh <br> Yang Anda Inginkan! </h1>
         </div>
     </section>
 
@@ -52,7 +35,7 @@
     <section class="tour">
         <div class="center-text">
 
-            <h2>Paling Seru!</h2>
+            <h2>Paling Nikmat!</h2>
         </div>
 
         <div class="tour-content">
@@ -80,5 +63,55 @@
         </div>
     </section>
 
+
+    <!-- Search Kuliner -->
+    <section class="form">
+        <form>
+            <h2>Ketik Apa yang anda cari dibawah</h2>
+        <div class="search">
+            <span class="material-symbols-outlined">
+                search
+            </span>
+            <input type="search" class="search-input" id="find" placeholder="Masukkan nama kuliner atau oleh-oleh" onkeyup="search()" />
+        </div>
+        <div class="product-list">
+            <div class="product">
+                <img src="./img/h1.jpg" />
+                <h3>Martabak</h3>
+            </div>
+            <div class="product">
+                <img src="./img/h1.jpg" />
+                <h3>Serabi</h3>
+            </div>
+            <div class="product">
+                <img src="./img/h1.jpg" />
+                <h3>Lontong</h3>
+            </div>
+            <div class="product">
+                <img src="./img/h1.jpg" />
+                <h3>Pukis</h3>
+            </div>
+            <div class="product">
+                <img src="./img/h1.jpg" />
+                <h3>Lemper</h3>
+            </div>
+            <div class="product">
+                <img src="./img/h1.jpg" />
+                <h3>Onde-onde</h3>
+            </div>
+            <div class="product">
+                <img src="./img/h1.jpg" />
+                <h3>Terang-Bulan</h3>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+
+    <?php include "../UKL/layout/footer.php" ?>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

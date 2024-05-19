@@ -1,11 +1,11 @@
- <?php
+<?php
 session_start();
-if(isset($_POST['Logout'])){
+if (isset($_POST['Logout'])) {
     session_unset();
     header('Location:index.php');
 }
 
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +20,10 @@ if(isset($_POST['Logout'])){
     <!--Fonts Google-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
 
     <!-- -CSS--->
-     <link rel="stylesheet" href="/dist/style.css" />
+    <link rel="stylesheet" href="/dist/style.css" />
     <title>Travo</title>
 </head>
 
@@ -52,40 +51,59 @@ if(isset($_POST['Logout'])){
         </div>
     </section>
 
-    <!---Fitur Section-->
-    <!-- <section class="feature">
-        <div class="feature-content">
-            <div class="row">
-                <div class="row-img">
-                    <img src="img/nap1.jpg" />
-                </div>
-                <h4> </h4>
+    <!-- Section Informasi -->
+    <section class="infor">
+        <div class="infor-text">
+            <h2> Apa Yang Ada di Travo?</h2>
+            <p>Travo Menyediakan berbagai Informasi Tentang Travel dan Oleh-Oleh <br>
+                Yang anda butuhkan ketika anda menikmati waktu liburan anda!
+            </p>
+        </div>
+
+        <div class="info-box">
+            <div class="step-box">
+                <h2><i class="ri-verified-badge-fill"></i></h2>
+                <h5>Informasi yang terpecaya dan valid!</h5>
             </div>
-            <div class="row">
-                <div class="row-img">
-                    <img src="img/nap2.jpg" />
-                </div>
-                <h4>Taman Nasional Baluran</h4>
+            <div class="step-box">
+                <h2><i class="ri-map-2-line"></i></h2>
+                <h5>Cari Lokasi Wisata yang ingin dituju!</h5>
             </div>
-            <div class="row">
-                <div class="row-img">
-                    <img src="img/nap3.jpg" />
-                </div>
-                <h4>Taman Nasional Baluran</h4>
+            <div class="step-box">
+                <h2><i class="ri-restaurant-2-fill"></i></h2>
+                <h5>Temukan Kuliner dan Oleh-oleh disekitar objek Wisata!</h5>
             </div>
-            <div class="row">
-                <div class="row-img">
-                    <img src="img/nap4.jpg" />
-                </div>
-                <h4>Taman Nasional Baluran</h4>
+            <div class="step-box">
+                <h2><i class="ri-emotion-happy-line"></i></h2>
+                <h5>Tampilan user yang friendly dan nyaman!</h5>
             </div>
-            <div class="row">
-                <div class="row-img">
-                    <img src="img/nap5.jpg" />
-                </div>
-                <h4>Taman Nasional Baluran</h4>
+        </div>
+    </section>
+
+    <section class="intro">
+        <div class="infor-text">
+            <h2>wisata Paling Diminati saat ini!</h2>
+        </div>
+        <div class="intro-box">
+            <div class="step-box">
+                <img src="/img/nap1.jpg" alt="" srcset="">
+                <h3>Lorem, ipsum dolor.</h3>
             </div>
-    </section> -->
+            <div class="step-box">
+                <img src="/img/nap5.jpg" alt="" srcset="">
+                <h3>Lorem, ipsum dolor.</h3>
+            </div>
+            <div class="step-box">
+                <img src="/img/nap3.jpg" alt="" srcset="">
+                <h3>Lorem, ipsum dolor.</h3>
+            </div>
+            <div class="step-box">
+                <img src="/img/nap4.jpg" alt="" srcset="">
+                <h3>Lorem, ipsum dolor.</h3>
+            </div>
+        </div>
+        <a class="btn" href="/destinasi.php">Selengkapnya</a>
+    </section>
 
     <!-- Prei Section design -->
     <section class="prei">
@@ -93,82 +111,17 @@ if(isset($_POST['Logout'])){
             <img src="./img/h1.jpg" />
         </div>
         <div class="prei-text">
-            <h5>Pantai Pancur</h5>
+            <h5>Makanan Serabi</h5>
             <h2>Tahu nggak sih?</h2>
             <p>
-                Nama Pantai Pancur berasal dari adanya aliran sungai kecil berair
-                tawar yang langsung bertemu dengan air laut. Aliran sungai ini cukup
-                unik karena menyerupai air terjun kecil sehingga disebut pancur yang
-                jika diartikan berarti air mancur atau pancuran.
-                Lokasi aliran sungai mirip airr terjun ini berada di samping tangga
-                yang menuju pantai.
+                Serabi adalah jajanan tradisional yang berasal dari Indonesia yang diperkirakan sudah dikenal sejak zaman 
+                Kerajaan Mataram. Makanan ini beberapa kali disebut dalam Serat Centhini yang ditulis para pujangga Keraton Surakarta pada tahun 1814 hingga tahun
+                 1823 atas perintah Pakubuwana V.
             </p>
-            <a href="#" class="btn">Detail</a>
+            <a href="kuiner.php" class="btn">Detail</a>
         </div>
     </section>
 
-    <!-- Tour Section Design -->
-    <section class="tour">
-        <div class="center-text">
-
-            <h2>Paling Seru!</h2>
-        </div>
-
-        <div class="tour-content">
-            <div class="box">
-                <img src="./img/t1.jpg">
-                <h6>Pulau Merah</h6>
-                <h4>Lorem, ipsum dolor.</h4>
-            </div>
-
-            <div class="box">
-                <img src="./img/t2.jpg">
-                <h6>Kawah Ijen</h6>
-                <h4>Lorem, ipsum dolor.</h4>
-            </div>
-
-            <div class="box">
-                <img src="./img/t3.jpg">
-                <h6>Taman Gandrung</h6>
-                <h4>Lorem, ipsum dolor.</h4>
-            </div>
-        </div>
-
-        <div class="center-btn">
-            <a href="#" class="btn">Ayo Jalan</a>
-        </div>
-    </section>
-
-    <!-- Culture section design -->
-    <section class="budaya">
-        <div class="budaya-text">
-            <h5>Budaya Banyuwangi</h5>
-            <h2>Banyuwangi memiliki segudang budaya yang unik dan indah.</h2>
-            <p>Sering dijuluki sebagai kota dengan segudang budaya, Banyuwangi memang memiliki
-                budaya yang begitu banyak, yang begitu terkenal adalah tariannya yaitu
-                Tari Gandrung yang sudah lama menjadi ikonik Kabupaten Banyuwangi,
-            </p>
-            <a href="#" class="btn">Baca lagi</a>
-        </div>
-
-        <div class="budaya-img">
-            <img src="img/c1.jpeg">
-        </div>
-    </section>
-
-    <!-- Berita Section Settings -->
-    <!-- <section class="berita">
-        <div class="berita-content">
-            <div class="berita-text">
-                <h2>Ingin yang lain?</h2>
-                <p>Mari kita temukan Objek Wisata yang seru!</p>
-            </div>
-            <form action="">
-                <input type="email" placeholder="Masukkan emailmu" required>
-                <input type="submit" value="Mulai" class="btn">
-            </form>
-        </div>
-    </section> -->
 
 
     <?php include "layout/footer.php" ?>
