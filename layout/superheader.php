@@ -21,8 +21,8 @@
 <header>
     <p href="" class="logo">TRA<span>VO</span></p>
     <ul class="navbar">
-        <li><a href="/admin/dashboard.php">Dashboard</a></li>
-        <li><a href="/admin/CRUD.php">Table</a></li>
+        <li><a href="/admin/index.php">Dashboard</a></li>
+        <li><a href="/admin/pengguna-admin.php">Table</a></li>
         <li><a href="/admin/kuliner-admin.php">Kuliner</a></li>
         <li><a href="/admin/wisata-admin.php">Wisata</a></li>
     </ul>

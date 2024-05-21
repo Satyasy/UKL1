@@ -29,9 +29,9 @@
     </ul>
 
     <div class="h-right">
-        <a href="#"><i class="ri-instagram-fill"></i></a>
-        <a href="#"><i class="ri-github-fill"></i></a>
-        <a href="#"><i class="ri-whatsapp-line"></i></a>
+    <a href="https://www.instagram.com/restyand_" target="blank"><i class="ri-instagram-fill"></i></a>
+            <a href="https://github.com/Satyasy" target="blank"><i class="ri-github-fill"></i></a>
+            <a href="https://wa.me/qr/ASSKVXFU5IDMA1" target="blank"><i class="ri-whatsapp-line"></i></a>
         <div class="bx bx-menu" id="menu-icon"></div>
     </div>
 

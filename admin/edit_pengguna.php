@@ -1,63 +1,74 @@
 <?php
-// Fungsi untuk membuat koneksi ke database
-function buatKoneksi() {
-    $servername = "localhost";
-    $username = "root";
-    $password = "altered";
-    $database = "pariwisata_db";
+ //import koneksi
+include('../service/database.php');
 
-    $koneksi = new mysqli($servername, $username, $password, $database);
 
-    // Memeriksa koneksi
-    if ($koneksi->connect_error) {
-        die("Koneksi gagal: " . $koneksi->connect_error);
+// Dapatkan id_pengguna dari URL
+$id_pengguna = $_GET["id"];
+
+// Query database
+$user = query("SELECT * FROM pengguna WHERE id_pengguna = $id_pengguna")[0];
+
+if (isset($_POST["submit"])) {
+
+
+    //Mengabill data update
+    $username = htmlspecialchars($_POST["username"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $nomor_telepon = htmlspecialchars($_POST["nomor_telepon"]);
+    $role = htmlspecialchars($_POST["role"]);
+
+    $user = "UPDATE pengguna SET 
+            username = '$username',
+            email = '$email',
+            password =  '$password',
+            nomor_telepon = '$nomor_telepon',
+            role = '$role'
+            WHERE id_pengguna = $id_pengguna";
+
+    mysqli_query($db, $user);
+
+    if (mysqli_affected_rows($db) > 0) {
+        echo "<script>
+        alert('Data berhasil diedit!');
+        document.location.href = 'pengguna-admin.php';
+        </script>";
+    } else {
+        echo "<script>
+        alert('Data gagal diedit!');
+        document.location.href = 'pengguna-admin.php';
+        </script>";
     }
-    return $koneksi;
+
+    return mysqli_affected_rows($db);
 }
 
-// Memeriksa apakah parameter ID pengguna diberikan dalam URL
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
-    $id_pengguna = $_GET["id"];
-    
-    // Panggil fungsi untuk membaca data pengguna berdasarkan ID
-    $koneksi = buatKoneksi();
-    $sql = "SELECT * FROM pengguna WHERE id_pengguna = ?";
-    $stmt = $koneksi->prepare($sql);
-    $stmt->bind_param("i", $id_pengguna);
-    $stmt->execute();
-    $hasil = $stmt->get_result();
-    
-    if ($hasil->num_rows > 0) {
-        $dataPengguna = $hasil->fetch_assoc();
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Edit Pengguna</title>
+    <link rel="stylesheet" href="style-admin.css">
 </head>
 <body>
-    <h2>Edit Pengguna</h2>
-    <form method="post" action="update_pengguna.php">
-        <input type="hidden" name="id_pengguna" value="<?php echo $dataPengguna['id_pengguna']; ?>">
+    <h2>Edit Data Pengguna</h2>
+    <form method="post" action="">
+        <input type="hidden" name="id_pengguna?" value="<?php echo $user['id_pengguna']; ?>">
         <label>Username:</label><br>
-        <input type="text" name="username" value="<?php echo $dataPengguna['username']; ?>"><br>
+        <input type="text" name="username" value="<?php echo $user['username']; ?>"><br>
         <label>Email:</label><br>
-        <input type="text" name="email" value="<?php echo $dataPengguna['email']; ?>"><br>
+        <input type="text" name="email" value="<?php echo $user['email']; ?>"><br>
+        <label>Password:</label><br>
+        <input type="text" name="password" value="<?php echo $user['password']; ?>"><br>
         <label>Nomor Telepon:</label><br>
-        <input type="text" name="nomor_telepon" value="<?php echo $dataPengguna['nomor_telepon']; ?>"><br>
+        <input type="text" name="nomor_telepon" value="<?php echo $user['nomor_telepon']; ?>"><br>
         <label>Role:</label><br>
-        <input type="text" name="role" value="<?php echo $dataPengguna['role']; ?>"><br><br>
-        <input type="submit" name="submit" value="Simpan Perubahan">
+        <input type="text" name="role" value="<?php echo $user['role']; ?>"><br><hr>
+        <button type="submit" name="submit" class="btn">Simpan Perubahan!</button>
     </form>
 </body>
 </html>
-<?php
-    } else {
-        echo "Pengguna tidak ditemukan.";
-    }
-    $stmt->close();
-    $koneksi->close();
-} else {
-    echo "ID pengguna tidak diberikan.";
-}
-?>

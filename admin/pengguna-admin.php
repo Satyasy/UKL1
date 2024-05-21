@@ -3,6 +3,7 @@ require ('../service/database.php');
 $user = query("SELECT * FROM pengguna");
 
 
+
 ?>
 
 
@@ -47,8 +48,8 @@ $user = query("SELECT * FROM pengguna");
                         <td><?= $row["password"]; ?></td>
                         <td><?= $row["role"]; ?></td>
                         <td>
-                            <a href="hapus_pengguna.php" class="btn" style=" margin:5px; padding:8px; ">Edit</a>
-                            <a href="edit_pengguna.php" class="btn" style=" margin:5px; padding:8px;">Delete</a>
+                            <a href="edit_pengguna.php? id=<?= $row["id_pengguna"]; ?>" class="btn" style=" margin:5px; padding:10px;  ">EDIT</a>
+                            <a href="hapus_pengguna.php? id=<?= $row["id_pengguna"]; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn" style=" margin:5px; padding:10px; ">DELETE</a>
                         </td>
                     </tr>
                     <?php $i++; ?>

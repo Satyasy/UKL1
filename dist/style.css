@@ -28,10 +28,12 @@ body {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
+
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -405,49 +407,23 @@ section {
     color: #ffffffab;
 }
 
-.berita-content form {
-    display: grid;
-    grid-template-columns: 1fr 0.4fr;
-    gap: 1rem;
-}
-
-
-.berita-content form input {
-    padding: 15px;
-    background: #202020;
-    font-size: var(--p-font);
-    color: var(--text-color);
-    border-radius: 5px;
-}
 
 .footer {
-    background-color: #979797;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
-    gap: 2rem;
+    background-color: var(--color);
+    text-align: center;
 }
 
-.footer-box {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-box h3 {
-    color: rgba(0, 0, 0, 0.795);
-    font-size: 20px;
+.footer h4 {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.footer-box a {
-    color: var(--text-color);
-    margin-bottom: 0.8rem;
-    transition: all .50s ease;
-}
-
-.footer-box a:hover {
-    transform: translateX(-5px);
     color: var(--main-color);
+}
+
+.footer h2 {
+    font-weight: 500;
+    font-size: 1.2rem;
 }
 
 
@@ -497,7 +473,7 @@ section {
     margin: 10px;
 }
 
-.container > .btn {
+.container>.btn {
     display: inline-block;
     padding: 13px 40px;
     background: var(--main-color);
@@ -525,9 +501,9 @@ section {
     letter-spacing: 0.3rem;
 }
 
-.container > table {
+.container>table {
     width: 100%;
-    border-collapse:separate;
+    border-collapse: separate;
     border: 3px solid #ddd;
     padding: 5px;
     margin-bottom: 20px;
@@ -539,10 +515,20 @@ td img {
 
 }
 
-th,
-td {
-    text-align:center;
+th {
+    text-align: center;
     padding: 8px;
+    font-weight: 600;
+    text-shadow: 3px 2px 4px black;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+td {
+    text-align: center;
+    padding: 8px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
 }
 
 tr:nth-child(even) {
@@ -718,7 +704,7 @@ th {
     color: var(--text-color);
 }
 
-.product a{
+.product a {
     text-decoration: none;
     color: var(--text-color);
 }
@@ -799,7 +785,7 @@ form h2 {
     padding: 0;
 }
 
-.home-destinasi > .home-text {
+.home-destinasi>.home-text {
     text-align: center;
     color: var(--text-color);
     font-size: var(--h1-font);
@@ -807,8 +793,8 @@ form h2 {
     text-transform: capitalize;
 }
 
-.home-destinasi > .home-text h1 {
-    font-family:'Poppins', serif;
+.home-destinasi>.home-text h1 {
+    font-family: 'Poppins', serif;
     margin-left: 18vh;
     text-shadow: 4px 3px 10px #141414;
 }
@@ -826,17 +812,75 @@ THIS IS IMPORTANT AND BEUTIFULLLLLL
 
 .about-home {
     background-color: var(--bg-color);
-    
+}
+
+.about-text {
+    margin-bottom: 20vh;
 }
 
 .about-text h1 {
+    margin-top: 15vh;
     font-family: 'Poppins', serif;
     font-weight: 600;
     text-align: center;
     font-size: var(--h1-font);
     color: var(--text-color);
     text-shadow: 2px 4px 10px #141414;
+}
 
+.about-text span {
+    background-color: var(--color);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.about-text p {
+    font-size: var(--h5-font);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.about h1{
+    font-size: var(--h1-font);
+    text-align: center;
+    margin: 10px;
+    letter-spacing: 10px;
+}
+
+.about1{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20%, auto));
+}
+
+.about1 > .content {
+    font-size: 1.2rem;
+    line-height: 40px;
+}
+
+.about1 img{
+    border-radius: 10px;
+    width: 90vh;
+    height: 100%;
+}
+
+.about1 h3{
+    margin-top: 20px;
+    font-size: 2rem ;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    color: var(--main-color);
+}
+
+hr {
+    border: 2px;
+}
+
+.about1 a{
+    font-size: var(--h2-font);
+    letter-spacing: 25vh;
+    margin-top: 5vh;
+    color: #979797;
+    
 }
 
 
@@ -861,7 +905,7 @@ THIS IS IMPORTANT AND BEUTIFULLLLLL
 
 
 .img-product {
-    margin-top:30px ;
+    margin-top: 30px;
     margin-bottom: 20px;
     margin-left: -5vh;
 }
@@ -887,7 +931,7 @@ THIS IS IMPORTANT AND BEUTIFULLLLLL
 .text-product {
     margin-top: 5vh;
     font-size: 2rem;
-    text-align:start;
+    text-align: start;
     text-transform: capitalize;
     text-shadow: 4px 3px 10px black;
 }
@@ -899,17 +943,17 @@ THIS IS IMPORTANT AND BEUTIFULLLLLL
     letter-spacing: 3px;
 }
 
-.text-product ul li i{
-    margin-right: 10px;  
+.text-product ul li i {
+    margin-right: 10px;
     color: var(--main-color);
 }
 
 .text-product ul li {
-    margin-right: 10px;  
+    margin-right: 10px;
     font-family: 'Poppins', sans-serif;
 }
 
-.text-desk h2{
+.text-desk h2 {
     text-align: center;
     margin-top: 15vh;
     margin-bottom: 5vh;
@@ -929,7 +973,7 @@ THIS IS IMPORTANT AND BEUTIFULLLLLL
     text-indent: 15vh;
     text-shadow: 4px 3px 10px black;
     color: var(--text-color);
-    line-height:normal;
+    line-height: normal;
 }
 
 .text-desk button {

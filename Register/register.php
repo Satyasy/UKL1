@@ -15,7 +15,7 @@ if (isset($_POST["register"])) {
     $password = $_POST["password"];
 
     // Hash password before storing it in the database
-    $hashed_password = md5($password);
+    //$hashed_password = md5($password);
 
     // Check if the username, email, and phone number already exist in the database
     $sql_check = "SELECT * FROM pengguna WHERE email=? OR username=? OR nomor_telepon=?";

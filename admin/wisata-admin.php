@@ -1,7 +1,9 @@
 <?php
 
-require ('../service/database.php');
+require('../service/database.php');
 $wisata = query("SELECT * FROM wisata");
+
+
 
 ?>
 
@@ -28,7 +30,6 @@ $wisata = query("SELECT * FROM wisata");
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabel Wisata</title>
-    <link rel="stylesheet" href="/dist/style.css">
 </head>
 
 <?php include "../layout/superheader.php" ?>
@@ -36,6 +37,7 @@ $wisata = query("SELECT * FROM wisata");
 <body>
     <div class="container">
         <h2> Daftar Wisata</h2>
+
         <table>
             <thead>
                 <tr>
@@ -62,14 +64,14 @@ $wisata = query("SELECT * FROM wisata");
                         <td><img src="/img/ <?= $row["gambar"]; ?>"></td>
                         <td> <?= $row["id_wisata"]; ?></td>
                         <td><?= $row["deskripsi"]; ?></td>
-                        <td><?= $row["biaya_masuk"]; ?></td>
+                        <td>Rp.<?= $row["biaya_masuk"]; ?></td>
                         <td><?= $row["jam_buka"]; ?></td>
                         <td><?= $row["jam_tutup"]; ?></td>
                         <td><?= $row["lokasi"]; ?></td>
                         <td><?= $row["fasilitas"]; ?></td>
                         <td>
-                            <a href="" class="btn" style=" margin:5px; padding:8px; ">Edit</a>
-                            <a href="" class="btn" style=" margin:5px; padding:8px;">Delete</a>
+                            <a href="edit_wisata.php? id= <?= $row["id_wisata"]; ?>" class="btn" style=" margin:5px; padding:10px; ">EDIT</a>
+                            <a href="hapus_wisata.php? id= <?= $row["id_wisata"]; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn" style=" margin:5px; padding:8px;">DELETE</a>
                         </td>
                     </tr>
                     <?php $i++; ?>
@@ -77,8 +79,8 @@ $wisata = query("SELECT * FROM wisata");
             </tbody>
         </table>
         <div class="btn-group"><a href="tambahkan_wisata.php" class="btn">
-            Tambah Wisata
-        </a>
+                Tambah Wisata
+            </a>
         </div>
     </div>
 </body>

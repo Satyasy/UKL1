@@ -18,42 +18,15 @@
 </head>
  
 <section class="footer">
-    <div class="footer-box">
-        <h3>Layanan Kami</h3>
-        <a href="#">Email Bisnis</a>
-        <a href="#">Branding</a>
-        <a href="#">Perusahaan</a>
-        <a href="#">Offline</a>
-    </div>
 
-    <div class="footer-box">
-        <h3>Tentang Kami</h3>
-        <a href="#">Latar Belakang</a>
-        <a href="#">Manfaat</a>
-        <a href="#">Tim</a>
-        <a href="#">Karir</a>
-    </div>
+    <div class="footer-text">
+        <h4>Dibuat dengan sepenuh hati <i class="ri-service-fill"></i></h4>
+        <p>
+            Copyright &copy; 2024 oleh Revano. <br> All Right Reversed
+        </p>
 
-    <div class="footer-box">
-        <h3>Bantuan</h3>
-        <a href="#">Help</a>
-        <a href="#">FAQs</a>
-        <a href="#">Hubungi kami</a>
     </div>
+    <!-- Hak Cipta -->
 
-    <div class="footer-box">
-        <h3>Social</h3>
-        <div class="social">
-        <a href="#"><i class="ri-instagram-fill"></i></a>
-        <a href="#"><i class="ri-github-fill"></i></a>
-        <a href="#"><i class="ri-whatsapp-line"></i></a>
-        </div>
-    </div>
 </section>
 
-<!-- Hak Cipta -->
-<div class="copyright">
-    <p>
-        Copyright &copy; 2024 oleh Restyand.
-    </p>
-</div>
