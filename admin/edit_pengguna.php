@@ -1,6 +1,12 @@
 <?php
- //import koneksi
-include('../service/database.php');
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location:../Register/login.php");
+    exit;
+}
+//import koneksi
+include ('../service/database.php');
+
 
 
 // Dapatkan id_pengguna dari URL
@@ -50,10 +56,12 @@ if (isset($_POST["submit"])) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Edit Pengguna</title>
     <link rel="stylesheet" href="style-admin.css">
 </head>
+
 <body>
     <h2>Edit Data Pengguna</h2>
     <form method="post" action="">
@@ -63,12 +71,15 @@ if (isset($_POST["submit"])) {
         <label>Email:</label><br>
         <input type="text" name="email" value="<?php echo $user['email']; ?>"><br>
         <label>Password:</label><br>
-        <input type="text" name="password" value="<?php echo $user['password']; ?>"><br>
+        <input style="color: #f5f7f17a;" type="text" name="password" readonly
+            value="<?php echo $user['password']; ?>"><br>
         <label>Nomor Telepon:</label><br>
         <input type="text" name="nomor_telepon" value="<?php echo $user['nomor_telepon']; ?>"><br>
         <label>Role:</label><br>
-        <input type="text" name="role" value="<?php echo $user['role']; ?>"><br><hr>
+        <input type="text" name="role" value="<?php echo $user['role']; ?>"><br>
+        <hr>
         <button type="submit" name="submit" class="btn">Simpan Perubahan!</button>
     </form>
 </body>
+
 </html>

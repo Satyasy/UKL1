@@ -1,7 +1,18 @@
 <?php
-//import koneksi
-require('./service/database.php');
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location:../Register/login.php");
+    exit;
+}
 
+//import koneksi
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location:Register/login.php");
+    exit;
+}
+
+require ('../service/database.php');
 if (isset($_POST["submit"])) {
 
 
@@ -12,10 +23,17 @@ if (isset($_POST["submit"])) {
     $nomor_telepon = htmlspecialchars($_POST["nomor_telepon"]);
     $role = htmlspecialchars($_POST["role"]);
 
+    //Encrypt Password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
     $sql = "INSERT INTO pengguna 
     VALUES 
     ('0','$username','$email','$password','$nomor_telepon','$role') 
     ";
+
+    if (empty(trim($username))) {
+        return false;
+    }
 
     mysqli_query($db, $sql);
 
@@ -52,7 +70,7 @@ if (isset($_POST["submit"])) {
 
 <body>
     <h2>Tambahkan Pengguna</h2>
-    <form method="POST" action="" >
+    <form method="POST" action="">
         <label for="username">Username:</label><br>
         <input type="text" name="username" id="username" placeholder="username" required><br>
         <label for="email">Email:</label><br>
@@ -60,8 +78,13 @@ if (isset($_POST["submit"])) {
         <label for="password">Password:</label><br>
         <input type="password" name="password" id="password" required><br>
         <label for="nomor_telepon">Nomor Telepon:</label><br>
-        <input type="tel" id="nomor_telepon" name="nomor_telepon" placeholder="08xx atau +628xx" pattern="(\+62|0)[2-9]{1}[0-9]{7,12|11}" required>
-        <input type="hidden" name="role" value="user"><br><br>
+        <input type="tel" id="nomor_telepon" name="nomor_telepon" placeholder="08xx atau +628xx"
+            pattern="(\+62|0)[2-9]{1}[0-9]{7,12|11}" required>
+        <label for="role">Role:</label>
+        <select name="role" id="role" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select><br><br>
         <button type="submit" name="submit">Submit!</button>
     </form>
 </body>

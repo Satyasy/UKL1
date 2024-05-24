@@ -1,7 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location:../Register/login.php");
+    exit;
+}
 //import koneksi
 include ('../service/database.php');
-
 
 // Dapatkan id_wisata dari URL
 $id_wisata = $_GET["id"];
@@ -11,9 +15,7 @@ $wst = query("SELECT * FROM wisata WHERE id_wisata = $id_wisata")[0];
 
 if (isset($_POST["submit"])) {
 
-
-    //Mengabill data update
-
+    //Mengambil data update
     $nama = htmlspecialchars($_POST["nama"]);
     $gambar = htmlspecialchars($_POST["gambar"]);
     $deskripsi = htmlspecialchars($_POST["deskripsi"]);
@@ -22,7 +24,14 @@ if (isset($_POST["submit"])) {
     $jam_tutup = htmlspecialchars($_POST["jam_tutup"]);
     $lokasi = htmlspecialchars($_POST["lokasi"]);
     $fasilitas = htmlspecialchars($_POST["fasilitas"]);
+    $gambarLama = htmlspecialchars($_POST["gambarLama"]);
 
+    //cek pemilihan gambar baru
+    if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === 4) {
+        $gambar = $gambarLama;
+    } else {
+        $gambar = upload();
+    }
 
     $wst = "UPDATE wisata SET 
            nama = '$nama',
@@ -52,27 +61,26 @@ if (isset($_POST["submit"])) {
 
     return mysqli_affected_rows($db);
 }
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Edit Data Wisata</title>
+    <title>SuperUser View</title>
     <link rel="stylesheet" href="style-admin.css">
 </head>
 
 <body>
     <h2>Edit Data Wisata</h2>
-    <form method="POST" action="">
-        <input type="hidden" name="id_wisata?" value="<?= $wst['id_wisata']; ?>">
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id_wisata?" value="<?= $wst["id_wisata"]; ?>">
+        <input type="hidden" name="gambarLama" value="<?= $wst["gambar"]; ?>">
         <label for="nama">Nama:</label><br>
         <input type="text" name="nama" id="nama" value="<?= $wst['nama']; ?>" required><br>
         <label for="gambar">Gambar:</label><br>
-        <input type="text" name="gambar" id="gambar" value="<?= $wst['gambar']; ?>" required><br>
+        <img src="/img/upload/<?= $wst['gambar']; ?>" width="150" height="100"
+            style="margin-left: -80%; margin-bottom: 10px;">
+        <input type="file" name="gambar" id="gambar"><br>
         <label for="deskripsi">Deskripsi:</label><br>
         <textarea name="deskripsi" id="deskrisi" required><?= $wst['deskripsi']; ?></textarea><br>
         <label for="biaya_masuk">Biaya Masuk:</label><br>

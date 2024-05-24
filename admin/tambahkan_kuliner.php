@@ -12,11 +12,10 @@ if (isset($_POST["submit"])) {
 
     //Mengambil data insert
     $nama = htmlspecialchars($_POST["nama"]);
-    $deskripsi = $_POST["deskripsi"];
-    $biaya_masuk = htmlspecialchars($_POST["biaya_masuk"]);
-    $jam_buka = htmlspecialchars($_POST["jam_buka"]);
-    $jam_tutup = htmlspecialchars($_POST["jam_tutup"]);
+    $deskripsi = htmlspecialchars($_POST["deskripsi"]);
+    $harga = htmlspecialchars($_POST["harga"]);
     $lokasi = htmlspecialchars($_POST["lokasi"]);
+    $kategori = htmlspecialchars($_POST["kategori"]);
     $fasilitas = htmlspecialchars($_POST["fasilitas"]);
 
     //Upload Gambar
@@ -26,20 +25,20 @@ if (isset($_POST["submit"])) {
     }
 
     //QUERY INSERT SEQUEL
-    $sql = "INSERT INTO wisata (gambar, nama, deskripsi, biaya_masuk, jam_buka, jam_tutup, lokasi, fasilitas) 
-            VALUES ('$gambar', '$nama', '$deskripsi', '$biaya_masuk', '$jam_buka', '$jam_tutup', '$lokasi', '$fasilitas')";
+    $sql = "INSERT INTO kuliner (gambar, nama, deskripsi, harga, lokasi, kategori, fasilitas) 
+            VALUES ('$gambar', '$nama', '$deskripsi', '$harga', '$lokasi', '$kategori', '$fasilitas')";
 
     mysqli_query($db, $sql);
 
     if (mysqli_affected_rows($db) > 0) {
         echo "<script>
         alert('Data berhasil ditambahkan!');
-        document.location.href = 'wisata-admin.php';
+        document.location.href = 'kuliner-admin.php';
         </script>";
     } else {
         echo "<script>
         alert('Data gagal ditambahkan!');
-        document.location.href = 'wisata-admin.php';
+        document.location.href = 'kuliner-admin.php';
         </script>";
     }
     return mysqli_affected_rows($db);
@@ -60,7 +59,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-    <h2>Tambahkan Wisata</h2>
+    <h2>Tambahkan kuliner</h2>
     <form method="POST" action="" enctype="multipart/form-data">
         <label for="nama">Nama:</label><br>
         <input type="text" name="nama" id="nama" required><br>
@@ -68,14 +67,15 @@ if (isset($_POST["submit"])) {
         <input type="file" name="gambar" id="gambar" required><br>
         <label for="deskripsi">Deskripsi:</label><br>
         <textarea name="deskripsi" id="deskrisi" id="deskripsi" required></textarea><br>
-        <label for="biaya_masuk">Biaya Masuk:</label><br>
-        <input step="0.01" min="0" type="number" name="biaya_masuk" id="biaya_masuk" required><br>
-        <label for="jam_buka">Jam Buka:</label><br>
-        <input type="time" name="jam_buka" id="jam_buka" required><br><br>
-        <label for="jam_tutup">Jam Tutup:</label><br>
-        <input type="time" name="jam_tutup" id="jam_tutup" required><br><br>
+        <label for="hrg">Harga Rata-rata</label><br>
+        <input type="number" name="harga" id="hrg" required><br>
         <label for="lokasi">Lokasi:</label><br>
         <input type="text" name="lokasi" id="lokasi" required><br><br>
+        <label>Kategori:</label><br>
+        <select name="kategori" id="kategori" required>
+            <option value="Makanan">Makanan</option>
+            <option value="Minuman">Minuman</option>
+        </select><br><br>
         <label for="fasilitas">Fasilitas:</label><br>
         <input type="text" name="fasilitas" id="fasilitas" required><br><br>
 

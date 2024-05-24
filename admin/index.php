@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["login"])) {
+    header("Location:../Register/login.php");
+    exit;
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,14 +22,22 @@
     <?php include "../layout/superheader.php" ?>
 
     <div class="container">
-        <div class="dashboard-header">
-            <h1>Welcome, <?php //echo $_SESSION['username']; ?>!</h1>
-        </div>
         <div class="dashboard-content">
-            <h2>Dashboard</h2>
-            <p>This is a simple admin dashboard. You can customize it according to your needs.</p>
+            <div class="about-text">
+                <h1 style="text-transform: capitalize; margin-top: 20vh;"><span>Halo <?php
+                $row = $_SESSION['username_or_email'];
+                echo "$row!";
+                ?></span> <br>
+                    Ini adalah Halaman Utama dari Superuser Page!!</h1>
+                <p>
+                    Halaman ini adalah tempat dimana semua data yang ada di website Travo disimpan. Anda dapat Mengedit,
+                    Menghapus bahkan Menambah data!.
+                </p>
+            </div>
         </div>
     </div>
+    <script src="../js/script.js"></script>
 </body>
+<?php include "../layout/footer.php" ?>
 
 </html>

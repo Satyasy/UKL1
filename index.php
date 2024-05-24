@@ -1,9 +1,25 @@
 <?php
 session_start();
-if (isset($_POST['Logout'])) {
-    session_unset();
-    header('Location:index.php');
+require 'service/database.php';
+
+if (!isset($_SESSION["login"])) {
+    header("Location:Register/login.php");
+    exit;
 }
+
+$sql = "SELECT nama, gambar FROM wisata LIMIT 4";
+$result = $db->query($sql);
+
+//Pengumpulan data
+$wisata = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $wisata[] = $row;
+    }
+}
+
+
+
 
 ?>
 
@@ -20,7 +36,8 @@ if (isset($_POST['Logout'])) {
     <!--Fonts Google-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet" />
 
     <!-- -CSS--->
     <link rel="stylesheet" href="/dist/style.css" />
@@ -32,10 +49,13 @@ if (isset($_POST['Logout'])) {
     <!--Home Section-->
     <section class="home">
         <div class="home-text">
-            <h2 style="font-size: 28px;
-            font-weight:600 ;
-            margin-bottom: 10px;
-            color: var(--text-color);">Selamat datang</h2>
+            <h2>Selamat datang
+                <span>
+                    <?=
+                        $row = $_SESSION['username_or_email'];
+                    ?>
+                </span>
+            </h2>
             <h5>Mari Berpetualang!</h5>
             <h1>
                 Petualangan lebih asik<br />
@@ -85,22 +105,12 @@ if (isset($_POST['Logout'])) {
             <h2>wisata Paling Diminati saat ini!</h2>
         </div>
         <div class="intro-box">
-            <div class="step-box">
-                <img src="/img/nap1.jpg" alt="" srcset="">
-                <h3>Lorem, ipsum dolor.</h3>
-            </div>
-            <div class="step-box">
-                <img src="/img/nap5.jpg" alt="" srcset="">
-                <h3>Lorem, ipsum dolor.</h3>
-            </div>
-            <div class="step-box">
-                <img src="/img/nap3.jpg" alt="" srcset="">
-                <h3>Lorem, ipsum dolor.</h3>
-            </div>
-            <div class="step-box">
-                <img src="/img/nap4.jpg" alt="" srcset="">
-                <h3>Lorem, ipsum dolor.</h3>
-            </div>
+            <?php foreach ($wisata as $row): ?>
+                <div class="step-box">
+                    <img src="/img/upload/<?= $row['gambar']; ?>" />
+                    <h3><?= $row['nama']; ?></h3>
+                </div>
+            <?php endforeach; ?>
         </div>
         <a class="btn" href="/destinasi.php">Selengkapnya</a>
     </section>
@@ -114,9 +124,11 @@ if (isset($_POST['Logout'])) {
             <h5>Makanan Serabi</h5>
             <h2>Tahu nggak sih?</h2>
             <p>
-                Serabi adalah jajanan tradisional yang berasal dari Indonesia yang diperkirakan sudah dikenal sejak zaman 
-                Kerajaan Mataram. Makanan ini beberapa kali disebut dalam Serat Centhini yang ditulis para pujangga Keraton Surakarta pada tahun 1814 hingga tahun
-                 1823 atas perintah Pakubuwana V.
+                Serabi adalah jajanan tradisional yang berasal dari Indonesia yang diperkirakan sudah dikenal sejak
+                zaman
+                Kerajaan Mataram. Makanan ini beberapa kali disebut dalam Serat Centhini yang ditulis para pujangga
+                Keraton Surakarta pada tahun 1814 hingga tahun
+                1823 atas perintah Pakubuwana V.
             </p>
             <a href="kuiner.php" class="btn">Detail</a>
         </div>

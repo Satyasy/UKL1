@@ -1,8 +1,12 @@
-<?php 
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location:../Register/login.php");
+    exit;
+}
+
 require ('../service/database.php');
 $user = query("SELECT * FROM pengguna");
-
-
 
 ?>
 
@@ -37,7 +41,7 @@ $user = query("SELECT * FROM pengguna");
             </thead>
             <tbody>
 
-            <?php $i = 1; ?>
+                <?php $i = 1; ?>
                 <?php foreach ($user as $row): ?>
                     <tr>
                         <td><?= "$i"; ?></td>
@@ -48,8 +52,11 @@ $user = query("SELECT * FROM pengguna");
                         <td><?= $row["password"]; ?></td>
                         <td><?= $row["role"]; ?></td>
                         <td>
-                            <a href="edit_pengguna.php? id=<?= $row["id_pengguna"]; ?>" class="btn" style=" margin:5px; padding:10px;  ">EDIT</a>
-                            <a href="hapus_pengguna.php? id=<?= $row["id_pengguna"]; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn" style=" margin:5px; padding:10px; ">DELETE</a>
+                            <a href="edit_pengguna.php? id=<?= $row["id_pengguna"]; ?>" class="btn"
+                                style=" margin:5px; padding:10px;  ">EDIT</a>
+                            <a href="hapus_pengguna.php? id=<?= $row["id_pengguna"]; ?>"
+                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn"
+                                style=" margin:5px; padding:10px; ">DELETE</a>
                         </td>
                     </tr>
                     <?php $i++; ?>
@@ -60,6 +67,8 @@ $user = query("SELECT * FROM pengguna");
             <a href="tambahkan_pengguna.php" class="btn">Tambahkan Pengguna</a>
         </div>
     </div>
+    <script src="../js/script.js"></script>
 </body>
+<?php include "../layout/footer.php" ?>
 
 </html>
