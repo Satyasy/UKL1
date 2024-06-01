@@ -402,10 +402,12 @@ section {
 }
 
 .footer {
-  max-height: 20vh;
-  background-color: var(--color);
+  width: 100%;
+  max-height: 20vh; /* Adjust as needed */
+  background-color: var(--color); /* Assuming --color is defined elsewhere */
   text-align: center;
 }
+
 
 .footer-text {
   letter-spacing: 3px;
@@ -721,7 +723,7 @@ margin-left: 75vh;
   transition: all .5s;
   text-align: center;
   margin-left: 13vh;
-  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .product a {
@@ -982,6 +984,7 @@ hr {
 }
 
 .text-product {
+  margin-left: 5vh;
   margin-top: 5vh;
   font-size: 2rem;
   text-align: start;
@@ -1030,6 +1033,51 @@ hr {
 }
 
 .text-desk button {
+  
   margin-top: 10vh;
   margin-bottom: 10vh;
 }
+
+.ratings-list {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+.rating-item {
+  border: solid var(--main-color);
+  margin:10px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color:var(--color);
+  box-shadow: 5px 5px 8px #141414;
+  height: 50vh;
+  width: 100vh;
+}
+
+
+.ratings-list h3 {
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  background-color: var(--color);
+  text-align: center;
+  padding:5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px #141414;
+}
+
+.rating-item h4 {
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  text-align: center;
+  padding:5px;
+  border-radius: 10px;
+}
+
+.rating-item span {
+  letter-spacing: 2px;
+}
+
+
+

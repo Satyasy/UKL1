@@ -7,15 +7,18 @@ if (!isset($_SESSION["login"])) {
     exit;
 }
 
-$sql = "SELECT nama, gambar, harga, kategori FROM kuliner";
+$sql = "SELECT k.nama, k.id_kuliner, k.gambar, k.harga, k.kategori, COALESCE(AVG(u.rating), 0) AS average_rating
+        FROM kuliner k
+        LEFT JOIN ulasan u ON k.id_kuliner = u.id_kuliner
+        GROUP BY k.id_kuliner, k.nama, k.gambar, k.harga, k.kategori";
 $result = $db->query($sql);
 
 //Kumpulkan Data
-$kuliner= [];
+$kuliner = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $kuliner[] = $row;
-}
+    }
 }
 ?>
 
@@ -60,27 +63,31 @@ if ($result->num_rows > 0) {
         </div>
 
         <div class="tour-content">
-            <div class="box">
-                <img src="./img/t1.jpg">
-                <h6>Pulau Merah</h6>
-                <h4>Lorem, ipsum dolor.</h4>
-            </div>
 
-            <div class="box">
-                <img src="./img/t2.jpg">
-                <h6>Kawah Ijen</h6>
-                <h4>Lorem, ipsum dolor.</h4>
-            </div>
+            <?php
+            // Define a counter variable
+            $counter = 0;
+            foreach ($kuliner as $row):
+                // Break the loop if counter reaches 4
+                if ($counter >= 4)
+                    break;
+                ?>
+                <div class="tour-content">
+                    <div class="box">
+                        <img src="/img/upload/<?= htmlspecialchars($row['gambar']); ?>" />
+                        <h6><?= htmlspecialchars($row['nama']); ?></h6>
+                    </div>
+                </div>
+                <?php
+                // Increment the counter
+                $counter++;
+            endforeach;
+            ?>
 
-            <div class="box">
-                <img src="./img/t3.jpg">
-                <h6>Taman Gandrung</h6>
-                <h4>Lorem, ipsum dolor.</h4>
-            </div>
         </div>
 
         <div class="center-btn">
-            <a href="#" class="btn">Ayo Jalan</a>
+            <a href="#find" class="btn">Ayo Jalan</a>
         </div>
     </section>
 
@@ -97,25 +104,30 @@ if ($result->num_rows > 0) {
                     onkeyup="search()" />
             </div>
             <div class="product-list">
-            <?php foreach ($kuliner as $row): ?>
-        <div class="product">
-            <img src="/img/upload/<?= $row['gambar']; ?>" />
-            <h3><?= $row['nama']; ?></h3>
-            <p class="jam">Harga Rata-rata: <span>Rp. <?= $row['harga']; ?></span></p>
-            <p class="jam">kategori: <span><?= $row['kategori']; ?></span></p>
-            <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span> <br />
-                <br />
-                <!-- Jumlah bintang dapat disesuaikan dengan rating -->
-                <button class="btn btn-rate"><a href="#">Selengkapnya</a></button>
-
-                </div>
-            </div>
-            <?php endforeach; ?>
+                <?php foreach ($kuliner as $row): ?>
+                    <div class="product">
+                        <img src="/img/upload/<?= $row['gambar']; ?>" />
+                        <h3><?= $row['nama']; ?></h3>
+                        <p class="jam">Harga Rata-rata: <span>Rp. <?= $row['harga']; ?></span></p>
+                        <p class="jam">kategori: <span><?= $row['kategori']; ?></span></p>
+                        <div class="rating">
+                            <?php
+                            $rating = round($row['average_rating']);
+                            for ($i = 1; $i <= $rating; $i++): ?>
+                                <span><i class="ri-star-fill"></i></span>
+                            <?php endfor;
+                            for ($i = $rating + 1; $i <= 5; $i++): ?>
+                                <span><i class="ri-star-line"></i></span> <!-- Menggunakan ikon bintang kosong -->
+                            <?php endfor; ?>
+                            <br />
+                            <p style="text-transform: capitalize; margin-top: 5px; margin-bottom:20px;">
+                                <?= htmlspecialchars($rating) ?> / 5 dari beberapa ulasan.
+                            </p>
+                            <button class="btn btn-rate"><a
+                                    href="product.php?id_kuliner=<?= htmlspecialchars($row['id_kuliner']); ?>">Selengkapnya</a></button>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
         </form>
     </section>
 

@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
     //Mengabill data update
 
     $nama = htmlspecialchars($_POST["nama"]);
-    $gambar = htmlspecialchars($_POST["gambar"]);
+    $gambar = isset($_POST["gambar"]) ? htmlspecialchars($_POST["gambar"]) : '';
     $deskripsi = htmlspecialchars($_POST["deskripsi"]);
     $harga = htmlspecialchars($_POST["harga"]);
     $lokasi = htmlspecialchars($_POST["lokasi"]);
@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
     $gambarLama = htmlspecialchars($_POST["gambarLama"]);
 
     //cek pemilihan gambar baru 
-    if ($_FILES['gambar']['error'] === 4) {
+    if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === 4) {
         $gambar = $gambarLama;
     } else {
         $gambar = upload();

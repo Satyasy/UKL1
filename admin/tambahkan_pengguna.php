@@ -5,13 +5,6 @@ if (!isset($_SESSION["login"])) {
     exit;
 }
 
-//import koneksi
-session_start();
-if (!isset($_SESSION["login"])) {
-    header("Location:Register/login.php");
-    exit;
-}
-
 require ('../service/database.php');
 if (isset($_POST["submit"])) {
 

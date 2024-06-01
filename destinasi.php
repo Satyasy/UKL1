@@ -7,7 +7,12 @@ if (!isset($_SESSION["login"])) {
   exit;
 }
 
-$sql = "SELECT nama, gambar, jam_buka, jam_tutup, biaya_masuk FROM wisata";
+// Query to get wisata details along with their average ratings
+$sql = "SELECT w.nama, w.id_wisata, w.gambar, w.jam_buka, w.jam_tutup, w.biaya_masuk, 
+               COALESCE(AVG(u.rating), 0) AS average_rating
+        FROM wisata w
+        LEFT JOIN ulasan u ON w.id_wisata = u.id_wisata
+        GROUP BY w.id_wisata, w.nama, w.gambar, w.jam_buka, w.jam_tutup, w.biaya_masuk";
 $result = $db->query($sql);
 
 // Kumpulkan data 
@@ -21,7 +26,6 @@ if ($result->num_rows > 0) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=0.75" />
@@ -32,10 +36,8 @@ if ($result->num_rows > 0) {
   <!--Fonts Google-->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
   <title>Destinasi</title>
   <link rel="stylesheet" href="/dist/style.css" />
@@ -73,29 +75,32 @@ if ($result->num_rows > 0) {
       <h2>Ketik Apa yang anda cari dibawah</h2>
       <div class="search">
         <span class="material-symbols-outlined"> search </span>
-        <input type="search" class="search-input" id="find" placeholder="Masukkan nama Kuliner atau Oleh-oleh"
-          onkeyup="search()" />
+        <input type="search" class="search-input" id="find" placeholder="Masukkan nama Kuliner atau Oleh-oleh" onkeyup="search()" />
       </div>
-     <div class="product-list">
-    <?php foreach ($wisata as $row): ?>
-        <div class="product">
+      <div class="product-list">
+        <?php foreach ($wisata as $row): ?>
+          <div class="product">
             <img src="/img/upload/<?= $row['gambar']; ?>" />
             <h3><?= $row['nama']; ?></h3>
             <p class="jam">Jam Operasional: <span><?= $row['jam_buka']; ?> - <?= $row['jam_tutup']; ?></span></p>
             <p class="jam">Biaya Masuk: <span>Rp.<?= $row['biaya_masuk']; ?></span></p>
             <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span> <br />
-                <br />
-                <!-- Jumlah bintang dapat disesuaikan dengan rating -->
-                <button class="btn btn-rate"><a href="#">Selengkapnya</a></button>
+              <?php
+              $rating = round($row['average_rating']);
+              for ($i = 1; $i <= $rating; $i++): ?>
+                <span><i class="ri-star-fill"></i></span>
+              <?php endfor;
+              for ($i = $rating + 1; $i <= 5; $i++): ?>
+                <span><i class="ri-star-line"></i></span> <!-- Menggunakan ikon bintang kosong -->
+              <?php endfor; ?>
+              <br />
+              <p style="text-transform: capitalize; margin-top: 5px; margin-bottom:20px;">
+                        <?= $rating ?> / 5 dari beberapa ulasan.
+                    </p>
+              <button class="btn btn-rate"><a href="product.php?id_wisata=<?= $row['id_wisata']; ?>">Selengkapnya</a></button>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+          </div>
+        <?php endforeach; ?>
       </div>
     </form>
   </section>
@@ -103,5 +108,4 @@ if ($result->num_rows > 0) {
   <?php include "../UKL/layout/footer.php" ?>
   <script src="js/script.js"></script>
 </body>
-
 </html>

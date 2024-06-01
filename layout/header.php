@@ -1,3 +1,5 @@
+
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,7 +29,6 @@
         <li><a href="/index.php">Home</a></li>
         <li><a href="/destinasi.php">Destinasi</a></li>
         <li><a href="/kuliner.php">Kuliner</a></li>
-        <li><a href="/UKL/statistik.php">Statistik</a></li>
         <li><a href="/about.php">About us</a></li>
     </ul>
 
@@ -37,6 +38,6 @@
         <a href="https://wa.me/qr/ASSKVXFU5IDMA1" target="blank"><i class="ri-whatsapp-line"></i></a>
     </div>
 
-    <div class="login"><a href="/Register/logout.php">Logout</a></div>
+    <div class="login"><a href="/Register/logout.php" >Logout</a></div>
 
 </header>

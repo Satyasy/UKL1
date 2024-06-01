@@ -16,7 +16,8 @@ if (isset($_POST["submit"])) {
     $harga = htmlspecialchars($_POST["harga"]);
     $lokasi = htmlspecialchars($_POST["lokasi"]);
     $kategori = htmlspecialchars($_POST["kategori"]);
-    $fasilitas = htmlspecialchars($_POST["fasilitas"]);
+    //ambil nilai checkbox
+    $fasilitas = isset($_POST["fasilitas"]) ? implode(', ', $_POST["fasilitas"]) : '';
 
     //Upload Gambar
     $gambar = upload();
@@ -77,8 +78,18 @@ if (isset($_POST["submit"])) {
             <option value="Minuman">Minuman</option>
         </select><br><br>
         <label for="fasilitas">Fasilitas:</label><br>
-        <input type="text" name="fasilitas" id="fasilitas" required><br><br>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" name="fasilitas[]" value="Restoran" id="fasilitas_restoran">
+                <label for="fasilitas_restoran">Restoran</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="fasilitas[]" value="Wifi" id="fasilitas_wifi">
+                <label for="fasilitas_wifi">Wifi</label>
+            </div>
+        </div>
 
+        <br>
         <button type="submit" name="submit">Submit!</button>
     </form>
 </body>

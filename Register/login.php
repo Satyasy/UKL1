@@ -24,6 +24,7 @@ if (isset($_POST["login"])) {
             $_SESSION["login"] = true;
             $_SESSION["username_or_email"] = $row["username"];
             $_SESSION["role"] = $row["role"];
+            $_SESSION["id_pengguna"] = $row["id_pengguna"];
 
             // pengalihan header
             if ($row["role"] === 'admin') {

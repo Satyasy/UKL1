@@ -16,7 +16,6 @@
     <!-- <link rel="stylesheet" href="../dist/style.css" /> -->
     <title>Travo</title>
 </head>
-
 <section class="footer">
 
     <div class="footer-text">

@@ -28,6 +28,7 @@
         <li><a href="/admin/pengguna-admin.php">Users</a></li>
         <li><a href="/admin/kuliner-admin.php">Kuliner</a></li>
         <li><a href="/admin/wisata-admin.php">Wisata</a></li>
+        <li><a href="/admin/ulasan_admin.php">Rating</a></li>
     </ul>
 
     <p class="logo">Super<span>User</span></p>

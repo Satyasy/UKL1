@@ -123,3 +123,39 @@ button:hover {
   background-color: var(--bg-color);
   color: var(--text-color);
 }
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5vh;
+    margin-top: 2vh;
+}
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.checkbox-item input[type="checkbox"] {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.05s, border-color 0.05s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.checkbox-item input[type="checkbox"]:checked {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+.checkbox-item input[type="checkbox"]:checked::before {
+    content: "✔";
+    color: var(--text-color);
+    font-size: 16px;
+}

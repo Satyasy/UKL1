@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
 
     //Mengambil data update
     $nama = htmlspecialchars($_POST["nama"]);
-    $gambar = htmlspecialchars($_POST["gambar"]);
+    $gambar = isset($_POST["gambar"]) ? htmlspecialchars($_POST["gambar"]) : '';
     $deskripsi = htmlspecialchars($_POST["deskripsi"]);
     $biaya_masuk = htmlspecialchars($_POST["biaya_masuk"]);
     $jam_buka = htmlspecialchars($_POST["jam_buka"]);
@@ -46,7 +46,7 @@ if (isset($_POST["submit"])) {
            ";
 
     mysqli_query($db, $wst);
-
+    
     if (mysqli_affected_rows($db) > 0) {
         echo "<script>
         alert('Data berhasil diedit!');
@@ -69,7 +69,6 @@ if (isset($_POST["submit"])) {
     <title>SuperUser View</title>
     <link rel="stylesheet" href="style-admin.css">
 </head>
-
 <body>
     <h2>Edit Data Wisata</h2>
     <form method="POST" enctype="multipart/form-data">

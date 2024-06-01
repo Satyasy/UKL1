@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"])) {
     exit;
 }
 
-$sql = "SELECT nama, gambar FROM wisata LIMIT 4";
+$sql = "SELECT nama, gambar, id_wisata FROM wisata LIMIT 4";
 $result = $db->query($sql);
 
 //Pengumpulan data
@@ -17,10 +17,6 @@ if ($result->num_rows > 0) {
         $wisata[] = $row;
     }
 }
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +49,7 @@ if ($result->num_rows > 0) {
                 <span>
                     <?=
                         $row = $_SESSION['username_or_email'];
-                    ?>
+                    ?>!
                 </span>
             </h2>
             <h5>Mari Berpetualang!</h5>
@@ -67,7 +63,7 @@ if ($result->num_rows > 0) {
                 pulau jawa. <br />
                 Kota ini juga disebut sebagai tempat dengan banyak Wisata dan Budaya.
             </p>
-            <a class="btn">Mulai Sekarang!</a>
+            <a class="btn" href="destinasi.php  ">Mulai Sekarang!</a>
         </div>
     </section>
 
@@ -100,6 +96,7 @@ if ($result->num_rows > 0) {
         </div>
     </section>
 
+    
     <section class="intro">
         <div class="infor-text">
             <h2>wisata Paling Diminati saat ini!</h2>
@@ -107,12 +104,12 @@ if ($result->num_rows > 0) {
         <div class="intro-box">
             <?php foreach ($wisata as $row): ?>
                 <div class="step-box">
-                    <img src="/img/upload/<?= $row['gambar']; ?>" />
-                    <h3><?= $row['nama']; ?></h3>
+                    <img src="/img/upload/<?= htmlspecialchars($row['gambar']); ?>" />
+                    <h3><a href="product.php?id_wisata=<?= htmlspecialchars($row["id_wisata"]);?>"><?= htmlspecialchars($row['nama']); ?></a></h3>
                 </div>
             <?php endforeach; ?>
         </div>
-        <a class="btn" href="/destinasi.php">Selengkapnya</a>
+        <a class="btn" href="destinasi.php">Selengkapnya</a>
     </section>
 
     <!-- Prei Section design -->
@@ -130,7 +127,7 @@ if ($result->num_rows > 0) {
                 Keraton Surakarta pada tahun 1814 hingga tahun
                 1823 atas perintah Pakubuwana V.
             </p>
-            <a href="kuiner.php" class="btn">Detail</a>
+            <a href="kuliner.php" class="btn">Detail</a>
         </div>
     </section>
 
